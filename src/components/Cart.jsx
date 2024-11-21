@@ -15,10 +15,10 @@ function CartItem({image, price, title, quantity, addToCart}){
                 </div>
 
             <footer>
-                <small onClick={addToCart}>
+                <small>
                     Qty:{quantity}
                 </small>
-                <button>+</button>
+                <button onClick={addToCart}>+</button>
             </footer>
         </li>
     )
@@ -26,7 +26,7 @@ function CartItem({image, price, title, quantity, addToCart}){
 
 export function Cart(){
     const cartCheckBoxId = useId();
-    const {cart, clearCart} = useCart()
+    const {cart, clearCart, addToCart} = useCart()
 
     return (
         <>
@@ -34,7 +34,13 @@ export function Cart(){
         <input id={cartCheckBoxId} type="checkbox" hidden />
         <aside className="cart">
             <ul>
-                
+                {cart.map(product=>
+                    <CartItem 
+                        key={product.id}
+                        addToCart={()=>addToCart(product)}
+                        {...product}
+                    />
+                )}
             </ul>
             <button onClick={clearCart}>
                 <RemoveFromCartIcon />

@@ -1,12 +1,14 @@
 .cart {
-    background: #000;
-    display: none;
-    padding: 32px;
-    position: fixed;
-    right: 0px;
-    top: 0px;
-    width: 200px;
-  }
+  background: #000;
+  display: none;
+  padding: 32px;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 200px;
+  max-height: 90%; /* Limita la altura del carrito */
+  overflow-y: auto; /* Habilita el scroll vertical */
+}
   
   .cart img {
     aspect-ratio: 16/9;
@@ -16,6 +18,7 @@
   .cart li {
     border-bottom: 1px solid #444;
     padding-bottom: 16px;
+    list-style: none; /* Asegúrate de que no haya viñetas */
   }
   
   .cart footer {
